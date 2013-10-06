@@ -1,6 +1,7 @@
 im = require('gm').subClass {imageMagick: true}
 mkdirp = require 'mkdirp'
 path = require 'path'
+ProgressBar = require 'progress'
 
 
 # Constants
@@ -29,6 +30,10 @@ module.exports = class DeepZoomImage
 
     descriptor = new DeepZoomImage source, width, height, DEFAULT_TILE_SIZE,
       DEFAULT_TILE_OVERLAP, format
+
+    bar = new ProgressBar '[:bar] :percent :etas',
+      width: 54
+      total: descriptor.numTiles
 
     for index in [descriptor.numLevels - 1..0]
       level = descriptor.levels[index]

@@ -41,9 +41,10 @@ module.exports = class DeepZoomImage
           outputPath = path.dirname url
           mkdirp outputPath, _
           levelImage.write url, _
+          bar.tick()
 
   _createLevels: (tileWidth, tileHeight, numLevels) ->
-    @getNumTiles = 0
+    @numTiles = 0
     for index in [0...numLevels]
       size = @_getSize index
       width = size.x

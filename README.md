@@ -4,11 +4,15 @@ Node.js tool for converting images to Deep Zoom images (DZI).
 
 ## Dependencies
 
--	[Python 2.7][Python]
--	[Python Imaging Library (PIL)][]
--	[Python Deep Zoom Tools][]
+-	[ImageMagick]
+
+## Installation (Mac OS X)
+
+- Install [Homebrew].
+- Install [ImageMagick]: `brew install imagemagick`.
+- Install dependencies: `npm install`.
 
 
-[Python]: http://python.org/
-[Python Imaging Library (PIL)]: http://www.pythonware.com/products/pil/
-[Python Deep Zoom Tools]: https://github.com/openzoom/deepzoom.py
+[Homebrew]: http://brew.sh/
+[ImageMagick]: http://www.imagemagick.org/
+

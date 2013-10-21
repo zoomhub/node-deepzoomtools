@@ -36,6 +36,7 @@ module.exports = class DeepZoomImage
       width: 54
       total: descriptor.numTiles
 
+    # Tiles
     for index in [descriptor.numLevels - 1..0]
       level = descriptor.levels[index]
       levelImage = im(source).resize level.width, level.height, '!'
@@ -49,6 +50,7 @@ module.exports = class DeepZoomImage
           levelImage.write url, _
           bar.tick()
 
+    # Manifest
     descriptor.writeManifest _
 
   _createLevels: (tileWidth, tileHeight, numLevels) ->

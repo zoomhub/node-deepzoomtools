@@ -20,7 +20,7 @@
   "scripts": {
     "test": "node_modules/.bin/_coffee test"
   },
-  "main": "./lib/deepzoom.js",
+  "main": "./lib/deepzoom._coffee",
   "dependencies": {
     "coffee-script": "~1.6.3",
     "gm": "~1.13.1",

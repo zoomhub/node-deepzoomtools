@@ -1,3 +1,4 @@
+fs = require 'fs'
 im = require('gm').subClass {imageMagick: true}
 mkdirp = require 'mkdirp'
 path = require 'path'
@@ -48,6 +49,8 @@ module.exports = class DeepZoomImage
           levelImage.write url, _
           bar.tick()
 
+    descriptor.writeManifest _
+
   _createLevels: (tileWidth, tileHeight, numLevels) ->
     @numTiles = 0
     for index in [0...numLevels]
@@ -82,6 +85,25 @@ module.exports = class DeepZoomImage
     size.x = Math.ceil @width * scale
     size.y = Math.ceil @height * scale
     size
+
+  getManifest: ->
+    """
+    <?xml version="1.0" encoding="utf-8"?>
+    <Image TileSize="#{@tileSize}" Overlap="#{@tileOverlap}" Format="#{@format}" ServerFormat="Default" xmlns="http://schemas.microsoft.com/deepzoom/2009">
+         <Size Width="#{@width}" Height="#{@height}"/>
+    </Image>
+
+    """
+
+  getManifestPath: ->
+    root = path.dirname @source
+    filename = path.basename @source, path.extname @source
+    path.join root, "#{filename}.dzi"
+
+  writeManifest: (_) ->
+    filename = @getManifestPath()
+    manifest = @getManifest()
+    fs.writeFile filename, manifest, _
 
   getTileBounds: (level, column, row) ->
     bounds = {}

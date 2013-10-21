@@ -32,10 +32,6 @@ module.exports = class DeepZoomImage
     descriptor = new DeepZoomImage source, width, height, DEFAULT_TILE_SIZE,
       DEFAULT_TILE_OVERLAP, format
 
-    bar = new ProgressBar '[:bar] :percent :etas',
-      width: 54
-      total: descriptor.numTiles
-
     # Tiles
     for index in [descriptor.numLevels - 1..0]
       level = descriptor.levels[index]
@@ -48,7 +44,6 @@ module.exports = class DeepZoomImage
           outputPath = path.dirname url
           mkdirp outputPath, _
           levelImage.write url, _
-          bar.tick()
 
     # Manifest
     descriptor.writeManifest _

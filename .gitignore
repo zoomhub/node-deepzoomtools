@@ -1,5 +1,9 @@
+# Mac OS X
+.DS_Store
+
 # npm
 /node_modules
+npm-debug.log
 
 # DZI
 *.dzi

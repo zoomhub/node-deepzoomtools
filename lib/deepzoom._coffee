@@ -57,13 +57,7 @@ module.exports = class DeepZoomImage
       numColumns = Math.ceil width / tileWidth
       numRows = Math.ceil height / tileHeight
       @numTiles += numColumns * numRows
-      level = {
-        index
-        width
-        height
-        numColumns
-        numRows
-      }
+      level = {index, width, height, numColumns, numRows}
       @levels.push level
 
   getTileURL: (level, column, row) ->

@@ -110,8 +110,8 @@ module.exports = class DeepZoomImage
     bounds.y = (row * @tileHeight) - offsetY
 
     l = @levels[level]
-    width = @tileWidth + (if column is 0 then 1 else 2) * @tileOverlap
-    height = @tileHeight + (if row is 0 then 1 else 2) * @tileOverlap
+    width = @tileWidth + ((if column is 0 then 1 else 2) * @tileOverlap)
+    height = @tileHeight + ((if row is 0 then 1 else 2) * @tileOverlap)
     bounds.width = Math.min width, l.width - bounds.x
     bounds.height = Math.min height, l.height - bounds.y
     bounds

@@ -35,15 +35,18 @@ module.exports = class DeepZoomImage
     # Tiles
     for index in [descriptor.numLevels - 1..0]
       level = descriptor.levels[index]
-      levelImage = im(source).resize level.width, level.height, '!'
       for column in [0...level.numColumns]
         for row in [0...level.numRows]
+          # Create tile path
           url = descriptor.getTileURL index, column, row
-          bounds = descriptor.getTileBounds index, column, row
-          levelImage.crop bounds.width, bounds.height, bounds.x, bounds.y
           outputPath = path.dirname url
           mkdirp outputPath, _
-          levelImage.write url, _
+          # Write tile
+          bounds = descriptor.getTileBounds index, column, row
+          options = '!' # force resize
+          tile = im(source).resize(level.width, level.height, options)
+                           .crop bounds.width, bounds.height, bounds.x, bounds.y
+          tile.write url, _
 
     # Manifest
     descriptor.writeManifest _

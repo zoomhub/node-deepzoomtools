@@ -16,7 +16,11 @@ Node.js tool for converting images to Deep Zoom images (DZI).
 
 - Run `npm test`.
 
+## Usage
+
+See [`test/index._coffee`][sample].
+
 
 [Homebrew]: http://brew.sh/
 [ImageMagick]: http://www.imagemagick.org/
-
+[sample]: test/index._coffee

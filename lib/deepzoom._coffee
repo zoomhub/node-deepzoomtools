@@ -83,7 +83,7 @@ module.exports = class DeepZoomImage
   getManifest: ->
     """
     <?xml version="1.0" encoding="utf-8"?>
-    <Image TileSize="#{@tileSize}" Overlap="#{@tileOverlap}" Format="#{@format}" ServerFormat="Default" xmlns="http://schemas.microsoft.com/deepzoom/2009">
+    <Image TileSize="#{@tileSize}" Overlap="#{@tileOverlap}" Format="#{@format}" xmlns="http://schemas.microsoft.com/deepzoom/2008">
          <Size Width="#{@width}" Height="#{@height}"/>
     </Image>
 

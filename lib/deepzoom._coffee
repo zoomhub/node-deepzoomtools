@@ -15,13 +15,18 @@ module.exports = class DeepZoomImage
       numColumns = Math.ceil width / tileWidth
       numRows = Math.ceil height / tileHeight
       @numTiles += numColumns * numRows
-      level = {index, width, height, numColumns, numRows}
+      url = @_getLevelURL index
+      level = {index, width, height, numColumns, numRows, url}
       @levels.push level
 
-  getTileURL: (level, column, row) ->
+  _getTileURL: (level, column, row) ->
+    levelPath = @levels[level].url
+    "#{levelPath}/#{column}_#{row}.#{@format}"
+
+  _getLevelURL: (level) ->
     basePath = @source.substring 0, @source.lastIndexOf '.'
     root = "#{basePath}_files"
-    "#{root}/#{level}/#{column}_#{row}.#{@format}"
+    "#{root}/#{level}"
 
   _getScale: (level) ->
     maxLevel = @numLevels - 1
@@ -40,10 +45,9 @@ module.exports = class DeepZoomImage
     <Image TileSize="#{@tileSize}" Overlap="#{@tileOverlap}" Format="#{@format}" xmlns="http://schemas.microsoft.com/deepzoom/2008">
          <Size Width="#{@width}" Height="#{@height}"/>
     </Image>
-
     """
 
-  getTileBounds: (level, column, row) ->
+  _getTileBounds: (level, column, row) ->
     bounds = {}
     offsetX = if column is 0 then 0 else @tileOverlap
     offsetY = if row is 0 then 0 else @tileOverlap
@@ -56,3 +60,8 @@ module.exports = class DeepZoomImage
     bounds.width = Math.min width, l.width - bounds.x
     bounds.height = Math.min height, l.height - bounds.y
     bounds
+
+  getTile: (level, column, row) ->
+    tile = @_getTileBounds level, column, row
+    tile.url = @_getTileURL level, column, row
+    tile

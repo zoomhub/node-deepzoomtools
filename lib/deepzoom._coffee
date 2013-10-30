@@ -25,7 +25,6 @@ module.exports = class DeepZoomImage
 
   _getScale: (level) ->
     maxLevel = @numLevels - 1
-    # 1 / (1 << maxLevel - level)
     Math.pow 0.5, maxLevel - level
 
   _getSize: (level) ->

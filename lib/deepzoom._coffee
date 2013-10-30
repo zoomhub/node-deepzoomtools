@@ -1,17 +1,4 @@
-fs = require 'fs'
-im = require('gm').subClass {imageMagick: true}
-mkdirp = require 'mkdirp'
-path = require 'path'
 ProgressBar = require 'progress'
-
-
-# Constants
-DEFAULT_TILE_SIZE = 254
-DEFAULT_TILE_OVERLAP = 1
-DEFAULT_FORMAT = 'jpg'
-FORMATS =
-  JPEG: 'jpg'
-  PNG: 'png'
 
 
 module.exports = class DeepZoomImage
@@ -21,35 +8,6 @@ module.exports = class DeepZoomImage
     @tileHeight = @tileSize
     @numLevels = Math.ceil(Math.log(Math.max(@width, @height)) / Math.LN2) + 1
     @_createLevels @tileSize, @tileSize, @numLevels
-
-  @create: (_, source, destination, tileSize, tileOverlap, format) ->
-    tileSize ?= DEFAULT_TILE_SIZE
-    tileOverlap ?= DEFAULT_TILE_OVERLAP
-    image = im source
-    {width, height} = image.size _
-    format ?= FORMATS[image.format _]
-
-    descriptor = new DeepZoomImage source, width, height, DEFAULT_TILE_SIZE,
-      DEFAULT_TILE_OVERLAP, format
-
-    # Tiles
-    for index in [descriptor.numLevels - 1..0]
-      level = descriptor.levels[index]
-      for column in [0...level.numColumns]
-        for row in [0...level.numRows]
-          # Create tile path
-          url = descriptor.getTileURL index, column, row
-          outputPath = path.dirname url
-          mkdirp outputPath, _
-          # Write tile
-          bounds = descriptor.getTileBounds index, column, row
-          options = '!' # force resize
-          tile = im(source).resize(level.width, level.height, options)
-                           .crop bounds.width, bounds.height, bounds.x, bounds.y
-          tile.write url, _
-
-    # Manifest
-    descriptor.writeManifest _
 
   _createLevels: (tileWidth, tileHeight, numLevels) ->
     @numTiles = 0
@@ -88,16 +46,6 @@ module.exports = class DeepZoomImage
     </Image>
 
     """
-
-  getManifestPath: ->
-    root = path.dirname @source
-    filename = path.basename @source, path.extname @source
-    path.join root, "#{filename}.dzi"
-
-  writeManifest: (_) ->
-    filename = @getManifestPath()
-    manifest = @getManifest()
-    fs.writeFile filename, manifest, _
 
   getTileBounds: (level, column, row) ->
     bounds = {}

@@ -11,7 +11,7 @@ module.exports = (_, source, destination, tileSize=defaults.TILE_SIZE,
   exec command, _
 
 
-getOutputPath = (dzi) ->
+getOutputPath = (destination) ->
   root = path.dirname(destination)
   base = path.basename destination, path.extname destination
   outputPath = path.join root, base

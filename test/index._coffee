@@ -1,4 +1,5 @@
 assert = require 'assert'
+convert = require '../lib/imagemagick._coffee'
 DeepZoomImage = require '../lib/deepzoom._coffee'
 path = require 'path'
 
@@ -45,3 +46,5 @@ DEFAULT_TILE_SIZE = 254
 DEFAULT_TILE_OVERLAP = 1
 DEFAULT_FORMAT = 'jpg'
 
+convert _, SOURCE, DESTINATION, DEFAULT_TILE_SIZE, DEFAULT_TILE_OVERLAP,
+        DEFAULT_FORMAT

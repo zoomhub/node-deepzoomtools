@@ -1,4 +1,5 @@
 DeepZoomImage = require './deepzoom'
+defaults = require './defaults'
 fs = require 'fs'
 im = require('gm').subClass {imageMagick: true}
 mkdirp = require 'mkdirp'
@@ -6,19 +7,16 @@ path = require 'path'
 
 
 # Constants
-DEFAULT_TILE_SIZE = 254
-DEFAULT_TILE_OVERLAP = 1
-DEFAULT_FORMAT = 'jpg'
 FORMATS =
   JPEG: 'jpg'
   PNG: 'png'
 
 
-module.exports = (_, source, destination, tileSize=DEFAULT_TILE_SIZE,
-                  tileOverlap=DEFAULT_TILE_OVERLAP, format) ->
+module.exports = (_, source, destination, tileSize=defaults.TILE_SIZE,
+                  tileOverlap=defaults.TILE_OVERLAP, format) ->
   image = im source
   {width, height} = image.size _
-  format ?= FORMATS[image.format _] ? DEFAULT_FORMAT
+  format ?= FORMATS[image.format _] ? defaults.FORMAT
 
   # Descriptor
   descriptor = new DeepZoomImage destination, width, height, tileSize,

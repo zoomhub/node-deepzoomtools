@@ -1,5 +1,6 @@
 assert = require 'assert'
-convert = require '../lib/imagemagick._coffee'
+# convert = require '../lib/imagemagick._coffee'
+convert = require '../lib/vips._coffee'
 DeepZoomImage = require '../lib/deepzoom._coffee'
 path = require 'path'
 

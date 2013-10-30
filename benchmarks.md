@@ -15,3 +15,13 @@ real  1m48.201s
 user  1m33.515s
 sys 0m13.699s
 ```
+
+### VIPS
+
+```bash
+> time vips dzsave images/1.jpg images/1-vips --overlap=1 --tile-width=254 --tile-height=254 --suffix=.jpg
+
+real  0m1.651s
+user  0m1.573s
+sys 0m1.643s
+```

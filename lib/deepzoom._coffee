@@ -1,6 +1,3 @@
-ProgressBar = require 'progress'
-
-
 module.exports = class DeepZoomImage
   constructor: (@source, @width, @height, @tileSize, @tileOverlap, @format) ->
     @levels = []

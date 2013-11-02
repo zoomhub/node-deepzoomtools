@@ -1,7 +1,7 @@
 {
   "name": "deepzoomtools",
   "description": "Node.js tool for converting images to Deep Zoom images (DZI).",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Daniel Gasienica <daniel@gasienica.ch>",
   "contributors": [
     {
@@ -33,8 +33,11 @@
   "keywords": [
     "deepzoom",
     "dzi",
+    "imagemagick",
+    "openseadragon",
     "seadragon",
-    "openseadragon"
+    "vips",
+    "zoomhub"
   ],
   "license": "MIT"
 }

@@ -1,7 +1,5 @@
 assert = require 'assert'
-# convert = require '../lib/imagemagick._coffee'
-convert = require '../lib/vips._coffee'
-DeepZoomImage = require '../lib/deepzoom._coffee'
+DeepZoomImage = require '../lib'
 path = require 'path'
 
 
@@ -39,13 +37,14 @@ for index in [maxLevel..0]
 
 
 # Create pyramid
+ID = Math.floor Math.random() * 1000
 SOURCE = path.join __dirname, '..', 'images', '1.jpg'
-DESTINATION = path.join __dirname, '..', 'images', '1.dzi'
+DESTINATION = path.join __dirname, '..', 'images', "#{ID}.dzi"
 
 
 DEFAULT_TILE_SIZE = 254
 DEFAULT_TILE_OVERLAP = 1
 DEFAULT_FORMAT = 'jpg'
 
-convert _, SOURCE, DESTINATION, DEFAULT_TILE_SIZE, DEFAULT_TILE_OVERLAP,
-        DEFAULT_FORMAT
+DeepZoomImage.create _, SOURCE, DESTINATION, DEFAULT_TILE_SIZE,
+  DEFAULT_TILE_OVERLAP, DEFAULT_FORMAT

@@ -1,3 +1,20 @@
+# Constants
+PLUGINS = [
+  'vips'
+  'imagemagick'
+]
+
+# Helper
+getPlugin = (_) ->
+  for name in PLUGINS
+    plugin = require "./#{name}"
+    return plugin if plugin.isAvailable _
+  libraries = for name in PLUGINS
+    """#{name} (#{require("./#{name}").MINIMUM_VERSION})"""
+  throw new Error "Please install one of the following libraries: #{libraries.join ', '}"
+
+
+# Public API
 module.exports = class DeepZoomImage
   constructor: (@source, @width, @height, @tileSize, @tileOverlap, @format) ->
     @levels = []
@@ -5,6 +22,10 @@ module.exports = class DeepZoomImage
     @tileHeight = @tileSize
     @numLevels = Math.ceil(Math.log(Math.max(@width, @height)) / Math.LN2) + 1
     @_createLevels @tileSize, @tileSize, @numLevels
+
+  @create: (_, source, destination, tileSize, tileOverlap, format) ->
+    plugin = getPlugin _
+    plugin.convert.apply null, arguments
 
   _createLevels: (tileWidth, tileHeight, numLevels) ->
     @numTiles = 0

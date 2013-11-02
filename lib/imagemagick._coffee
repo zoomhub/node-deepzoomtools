@@ -1,9 +1,10 @@
-DeepZoomImage = require './deepzoom'
+DeepZoomImage = require './index'
 defaults = require './defaults'
 fs = require 'fs'
 im = require('gm').subClass {imageMagick: true}
 mkdirp = require 'mkdirp'
 path = require 'path'
+util = require './util'
 
 
 # Constants
@@ -11,8 +12,18 @@ FORMATS =
   JPEG: 'jpg'
   PNG: 'png'
 
+VERSION_REGEX = /ImageMagick (\d+\.\d+\.\d+)/
 
-module.exports = (_, source, destination, tileSize=defaults.TILE_SIZE,
+
+# Public API
+exports.MINIMUM_VERSION = '~6.8.7'
+
+exports.isAvailable = (_) ->
+  raw = util.getVersion 'convert --version', _
+  version = raw?.match(VERSION_REGEX)?[1]
+  util.satisfiesVersion version, exports.MINIMUM_VERSION
+
+exports.convert = (_, source, destination, tileSize=defaults.TILE_SIZE,
                   tileOverlap=defaults.TILE_OVERLAP, format) ->
   image = im source
   {width, height} = image.size _

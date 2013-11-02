@@ -1,7 +1,7 @@
 {
   "name": "deepzoomtools",
   "description": "Node.js tool for converting images to Deep Zoom images (DZI).",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "author": "Daniel Gasienica <daniel@gasienica.ch>",
   "contributors": [
     {
@@ -20,20 +20,24 @@
   "scripts": {
     "test": "node_modules/.bin/_coffee test"
   },
-  "main": "./lib/deepzoom._coffee",
+  "main": "./lib/index._coffee",
   "dependencies": {
     "coffee-script": "~1.6.3",
     "gm": "~1.13.1",
     "mkdirp": "~0.3.5",
     "progress": "~1.1.0",
+    "semver": "~2.2.1",
     "streamline": "~0.8.0",
     "xml2js": "~0.2.8"
   },
   "keywords": [
     "deepzoom",
     "dzi",
+    "imagemagick",
+    "openseadragon",
     "seadragon",
-    "openseadragon"
+    "vips",
+    "zoomhub"
   ],
   "license": "MIT"
 }

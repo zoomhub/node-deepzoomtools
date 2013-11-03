@@ -1,5 +1,9 @@
 # Node.js Deep Zoom Tools
 
+
+-   Ensure [VIPS] and [ImageMagick] plugins accept more versions of their
+    core library.
+
 ## 0.0.2 — November 1, 2013
 
 -   Add support for [VIPS] image library.
@@ -10,4 +14,5 @@
 -   Initial release.
 
 
+[ImageMagick]: http://www.imagemagick.org/script/index.php
 [VIPS]: http://www.vips.ecs.soton.ac.uk/index.php?title=Libvips

@@ -16,7 +16,7 @@ VERSION_REGEX = /ImageMagick (\d+\.\d+\.\d+)/
 
 
 # Public API
-exports.MINIMUM_VERSION = '~6.8.7'
+exports.MINIMUM_VERSION = '^6.6.9'
 
 exports.isAvailable = (_) ->
   raw = util.getVersion 'convert --version', _

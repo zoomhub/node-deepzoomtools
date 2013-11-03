@@ -11,7 +11,7 @@ getOutputPath = (destination) ->
   outputPath = path.join root, base
 
 # Public API
-exports.MINIMUM_VERSION = '~7.32.1'
+exports.MINIMUM_VERSION = '^7.32.1'
 
 exports.isAvailable = (_) ->
   raw = util.getVersion 'vips --version', _

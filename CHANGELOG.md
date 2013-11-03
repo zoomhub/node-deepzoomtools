@@ -1,5 +1,9 @@
 # Node.js Deep Zoom Tools
 
+## 0.0.4 — November 3, 2013
+
+-   Throw error when file already exists (error code 1).
+
 ## 0.0.3 — November 2, 2013
 
 -   Ensure [VIPS] and [ImageMagick] plugins accept more versions of their

@@ -1,5 +1,10 @@
 # Node.js Deep Zoom Tools
 
+## 0.0.5 — October 1, 2013
+
+-   Bump `coffee-script` version from 1.6.3 to 1.8.0.
+-   Bump `streamline` version from 0.8.0 to 0.10.16.
+
 ## 0.0.4 — November 3, 2013
 
 -   Throw error when file already exists (error code 1).

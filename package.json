@@ -27,7 +27,7 @@
     "mkdirp": "~0.3.5",
     "progress": "~1.1.0",
     "semver": "~2.2.1",
-    "streamline": "~0.8.0",
+    "streamline": "~0.10.16",
     "xml2js": "~0.2.8"
   },
   "keywords": [

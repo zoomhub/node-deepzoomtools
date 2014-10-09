@@ -1,5 +1,9 @@
 # Node.js Deep Zoom Tools
 
+## 0.0.6 — October 9, 2014
+
+-   Add `postinstall` script to compile Streamline.js/Coffee.
+
 ## 0.0.5 — October 1, 2013
 
 -   Bump `coffee-script` version from 1.6.3 to 1.8.0.

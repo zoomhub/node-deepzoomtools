@@ -1,6 +1,9 @@
 # Mac OS X
 .DS_Store
 
+# Generated JS
+/lib/*.js
+
 # npm
 /node_modules
 npm-debug.log

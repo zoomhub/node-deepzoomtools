@@ -18,9 +18,10 @@
     "url": "https://github.com/openzoom/node-deepzoomtools.git"
   },
   "scripts": {
-    "test": "node_modules/.bin/_coffee test"
+    "test": "node_modules/.bin/_coffee test",
+    "postinstall": "_coffee -c lib"
   },
-  "main": "./lib/index._coffee",
+  "main": "./lib",
   "dependencies": {
     "coffee-script": "^1.8.0",
     "gm": "^1.13.1",

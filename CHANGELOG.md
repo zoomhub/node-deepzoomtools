@@ -1,6 +1,10 @@
 # Node.js Deep Zoom Tools
 
-## 0.0.6 — Feburary 22, 2015
+## 0.0.8 — Feburary 22, 2015
+
+-   Fix callback getting called twice, once prematurely.
+
+## 0.0.7 — Feburary 22, 2015
 
 -   Change `postinstall` compilation hook to `prepublish`.
 

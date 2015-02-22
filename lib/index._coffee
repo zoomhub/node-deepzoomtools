@@ -25,7 +25,11 @@ module.exports = class DeepZoomImage
 
   @create: (_, source, destination, tileSize, tileOverlap, format) ->
     plugin = getPlugin _
-    plugin.convert.apply null, arguments
+    # NOTE: We want to pass all arguments to the plugin, but this is an async
+    # Streamline method, so we use Streamline's special `apply_` to do that.
+    # https://github.com/Sage/streamlinejs/blob/master/lib/compiler/builtins.md#function-functions
+    args = [].slice.call arguments, 1           # Excludes _
+    plugin.convert.apply_ _, null, args, 0      # Insert _ at position 0
 
   _createLevels: (tileWidth, tileHeight, numLevels) ->
     @numTiles = 0

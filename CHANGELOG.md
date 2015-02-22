@@ -1,5 +1,9 @@
 # Node.js Deep Zoom Tools
 
+## 0.0.6 — Feburary 22, 2015
+
+-   Change `postinstall` compilation hook to `prepublish`.
+
 ## 0.0.6 — October 9, 2014
 
 -   Add `postinstall` script to compile Streamline.js/Coffee.

@@ -38,8 +38,8 @@ for index in [maxLevel..0]
 
 # Create pyramid
 ID = Math.floor Math.random() * 1000
-SOURCE = path.join __dirname, '..', 'images', '1.jpg'
-DESTINATION = path.join __dirname, '..', 'images', "#{ID}.dzi"
+SOURCE = path.join __dirname, 'images', 'carina-nebula-6000x2906.jpg'
+DESTINATION = path.join __dirname, 'images', "#{ID}.dzi"
 
 
 DEFAULT_TILE_SIZE = 254
